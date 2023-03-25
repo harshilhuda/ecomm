@@ -1,0 +1,42 @@
+.slider{
+    position: relative;
+    padding: 26px;
+    max-height: 350px;
+    background-color: white;
+    font-size: 10px;
+    line-height: 0;
+    // z-index: 1;
+    .left,.right{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .right{
+        right: 0;
+    }
+    .container{
+        scroll-behavior: smooth;
+        // position: relative;
+        padding: 0 50px;
+        display: flex;
+        gap: 100px;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        .product{
+            border: 2px solid #6fa8dc;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            img{
+                width: 250px;
+                height: 250px;
+            }
+        }
+    }
+}

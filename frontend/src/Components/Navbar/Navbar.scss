@@ -1,0 +1,116 @@
+.navbar{
+    height: 80px;
+    font-size: 16px;
+    background-color:#6fa8dc;
+    color: #fff;
+    letter-spacing: 1px;
+    position: sticky;
+    // width: 100%;
+    top: 0;
+    // margin: 0;
+    h3{
+        font-size: 20px;
+    }
+    .link
+    {
+        text-decoration: none;
+        color: inherit;
+    }
+    .wrapper
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // position: relative;
+        padding: 0 100px;
+        .left{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .left:hover{
+            border: 2px solid white;
+        }
+        .center
+        {
+            justify-self: center;
+            align-self: center;
+            cursor: pointer;
+        }
+        .center:hover{
+            border: 2px solid white;
+        }
+        .right{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .search
+            {
+                cursor: pointer;
+            }
+            .cart
+            {
+                cursor: pointer;
+                span{
+                    font-size: 12px;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    background-color: #e33054;
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    right: 140px;
+                    top: 10px;
+                }
+            }
+            .cart:hover{
+                border: 2px solid white;
+            }
+            .account
+            {
+                cursor: pointer;
+                // position: relative;
+            }
+            .account:hover{
+                border: 2px solid white;
+            }
+            .dropdown{
+                // float: left;
+                overflow: hidden;
+                // position: relative;
+                display: inline-block;
+            }
+            .dropbtn:hover {
+                border: 2px solid white;
+                cursor: pointer;
+              }
+              
+            .dropdown-content {
+                // display: none;
+                position: absolute;
+                top: 70px;
+                // left: 0;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 999;
+                height: fit-content;
+                right: 30px;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                color: black;
+                gap: 10px;
+                button{
+                    background: transparent;
+                    border: none;
+                    font-size: inherit;
+                    cursor: pointer;
+                }
+              }
+        }
+    }
+}

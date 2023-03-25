@@ -1,0 +1,22 @@
+.category{
+    position: absolute;
+    left: 80px;
+    top: 85px;
+    z-index: 999;
+    // background-color: rgba(255,255,255,0.8);
+    background-color: #a4f2df;
+    width: 150px;
+    height: fit-content;
+    color: black;
+    // background-color: #19325c;
+    padding: 20px;
+    --webkit-box-shadow: 0px 0px 7px -5px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 7px -5px rgba(0,0,0,0.5);
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+    }
+}

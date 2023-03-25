@@ -1,0 +1,20 @@
+.account{
+    position: absolute;
+    right: 40px;
+    top: 85px;
+    z-index: 999;
+    width: 120px;
+    height: fit-content;
+    color: black;
+    padding: 20px;
+    background-color: #a4f2df;
+    --webkit-box-shadow: 0px 0px 7px -5px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 7px -5px rgba(0,0,0,0.5);
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+    }
+}

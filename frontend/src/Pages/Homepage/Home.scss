@@ -1,0 +1,17 @@
+.home{
+    margin-top: 20px;
+    .trending{
+        margin: 50px 200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            h1{
+                flex: 2;
+                text-transform: capitalize;
+            }
+            p{
+                flex: 3;
+            }
+        }
+}
