@@ -26,6 +26,7 @@ function CategoryPage() {
     const sp = new URLSearchParams(search)
     const category = sp.get('category') || 'all'
     const query=sp.get('query') || 'all'
+    const [Query,setQuery]=useState('all')
     const [{ loading, error, products }, dispatch] = useReducer((reducer), {
         products: [],
         loading: true,
@@ -51,7 +52,7 @@ function CategoryPage() {
             }
         }
         getProduct()
-    }, [category, error, currentPage])
+    }, [category, error, currentPage,query])
     useEffect(() => {
         setCurrentPage(1)
     }, [category])
@@ -74,7 +75,7 @@ function CategoryPage() {
     const getFilterUrl=(filter,skipPathName)=>{
         const filterCategory=filter.category || category
         const filterQuery=filter.query || query
-        return `${skipPathName?'':'/search?'}category=${filterCategory}&query=${filterQuery}`
+        return `${skipPathName?'':'/search?'}category=${filterCategory}&page=${currentPage}&query=${filterQuery}`
 
     }
     return (
@@ -95,10 +96,11 @@ function CategoryPage() {
             </div>
             <div className="right">
                 <div className="search">
-                    <input type="text" placeholder='Search' className='i' />
-                    <div className="s">
-                        <SearchIcon />
-                    </div>
+                    <input type="text" placeholder='Search' className='i' onChange={(e)=>setQuery(e.target.value)} />
+                    {/* <div className="s"> */}
+                        {Query?<Link to={getFilterUrl({ query: Query })}><div className='s'><SearchIcon /></div></Link>:
+                        <Link to={getFilterUrl({ query: 'all' })}><div className='s'><SearchIcon /></div></Link>}
+                    {/* </div> */}
                 </div>
                 <div className="r">
                     {products.map((product) => (

@@ -32,15 +32,24 @@ export const getSingleProduct=async(req,res,next)=>{
 export const getSearch=async(req,res)=>{
     const {query}=req
     const category=query.category
+    const searchQuery=query.query || ''
     const categoryFilter=category && category!='all'?{category}:{}
+    const queryFilter= searchQuery && searchQuery!='all'?{
+        name:{
+            $regex:searchQuery,
+            $options:'i'
+        }
+    }:{}
     const perPage=3;
     const page=query.page || 1
     const skip=(page-1) * perPage
     const count=await Product.find({
-        ...categoryFilter
+        ...categoryFilter,
+        ...queryFilter
     }).countDocuments()
     const products=await Product.find({
-        ...categoryFilter
+        ...categoryFilter,
+        ...queryFilter
     }).skip(skip).limit(perPage)
     res.status(200).json({products,count})
 }
