@@ -46,7 +46,7 @@ function Navbar() {
           <Link to='/' className='link'> <h3>Home</h3> </Link>
         </div>
         <div className="right">
-          <h3 className='search'><SearchOutlinedIcon sx={{ fontSize: 30 }} /></h3>
+          <h3 className='search'><Link className='link' to='/search'><SearchOutlinedIcon sx={{ fontSize: 30 }} /></Link></h3>
           <div className="cart"><h3><Link to='/cart' className='link'><AddShoppingCartIcon sx={{ fontSize: 30 }} /></Link></h3> <span>{cart.cartItems.reduce((a, c) => a + c.quantity, 0)}</span></div>
           <div className="dropdown" ref={ref1}>
             <h3 className='dropbtn'  onClick={() => setDropdown(!dropdown)}><AccountCircleIcon sx={{ fontSize: 30 }} /></h3>
