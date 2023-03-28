@@ -26,6 +26,7 @@ function CategoryPage() {
     const sp = new URLSearchParams(search)
     const category = sp.get('category') || 'all'
     const query=sp.get('query') || 'all'
+    const order=sp.get('order') || 'newest'
     const [Query,setQuery]=useState('all')
     const [{ loading, error, products }, dispatch] = useReducer((reducer), {
         products: [],
@@ -40,7 +41,7 @@ function CategoryPage() {
         const getProduct = async () => {
             dispatch({ type: 'FETCH_REQUEST' })
             try {
-                const result = await axios.get(`/api/products/search?category=${category}&page=${currentPage}&query=${query}`)
+                const result = await axios.get(`/api/products/search?category=${category}&page=${currentPage}&query=${query}&order=${order}`)
                 setTotalItems(result.data.count)
                 dispatch({ type: 'FETCH_SUCCESS', payload: result.data.products })
             }
@@ -52,7 +53,7 @@ function CategoryPage() {
             }
         }
         getProduct()
-    }, [category, error, currentPage,query])
+    }, [category, error, currentPage,query,order])
     useEffect(() => {
         setCurrentPage(1)
     }, [category])
@@ -75,7 +76,8 @@ function CategoryPage() {
     const getFilterUrl=(filter,skipPathName)=>{
         const filterCategory=filter.category || category
         const filterQuery=filter.query || query
-        return `${skipPathName?'':'/search?'}category=${filterCategory}&page=${currentPage}&query=${filterQuery}`
+        const sortOrder=filter.order || order
+        return `${skipPathName?'':'/search?'}category=${filterCategory}&page=${currentPage}&query=${filterQuery}&order=${sortOrder}`
 
     }
     return (
@@ -90,8 +92,8 @@ function CategoryPage() {
                 </ul>
                 <h1>Price</h1>
                 <ul>
-                    <li><Link to='/' className='link1'>Low to High</Link></li>
-                    <li><Link to='/' className='link1'>High to Low</Link></li>
+                    <li><Link to={getFilterUrl({order:'lowest'})} className='link1'>Low to High</Link></li>
+                    <li><Link to={getFilterUrl({order:'highest'})} className='link1'>High to Low</Link></li>
                 </ul>
             </div>
             <div className="right">

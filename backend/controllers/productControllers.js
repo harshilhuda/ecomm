@@ -33,6 +33,8 @@ export const getSearch=async(req,res)=>{
     const {query}=req
     const category=query.category
     const searchQuery=query.query || ''
+    const price=query.price || ''
+    const order=query.order || ''
     const categoryFilter=category && category!='all'?{category}:{}
     const queryFilter= searchQuery && searchQuery!='all'?{
         name:{
@@ -40,6 +42,12 @@ export const getSearch=async(req,res)=>{
             $options:'i'
         }
     }:{}
+    const sortOrder=
+    order==='lowest'?
+    {price:1}:
+    order==='highest'?
+    {price:-1}:
+    {createdAt:-1}
     const perPage=3;
     const page=query.page || 1
     const skip=(page-1) * perPage
@@ -50,7 +58,10 @@ export const getSearch=async(req,res)=>{
     const products=await Product.find({
         ...categoryFilter,
         ...queryFilter
-    }).skip(skip).limit(perPage)
+    })
+    .skip(skip)
+    .limit(perPage)
+    .sort(sortOrder)
     res.status(200).json({products,count})
 }
 
