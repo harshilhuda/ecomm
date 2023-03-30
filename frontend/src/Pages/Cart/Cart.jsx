@@ -5,11 +5,12 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import {toast} from 'react-toastify'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Cart.scss'
 function Cart() {
     const {state,dispatch:ctxDispatch}=useContext(Store)
     const {cart}=state
+    const navigate=useNavigate()
     const addToCartHandler=async(currentproduct,quantity)=>{
         const {data}=await axios.get(`/api/products/${currentproduct._id}`)
         const item=cart.cartItems.find((x)=>x._id===currentproduct._id)
@@ -63,7 +64,7 @@ function Cart() {
               <h1>Subtotal ({cart.cartItems.reduce((a,c)=>a+c.quantity,0)}{' '}items) RS:
               {cart.cartItems.reduce((a,c)=>a+c.price*c.quantity,0)}</h1>
               <div><hr /></div>
-              <button>Proceed to Checout</button>
+              <button onClick={()=>navigate('/shipping')}>Proceed to Checout</button>
             </div>
         </div>
     </div>

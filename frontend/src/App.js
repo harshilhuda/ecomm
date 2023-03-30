@@ -9,6 +9,9 @@ import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
 import Cart from './Pages/Cart/Cart';
 import CategoryPage from './Pages/CategoryPage/CategoryPage';
+import ShippingScreen from './Pages/Shipping/ShippingScreen';
+import Payment from './Pages/Payment/Payment';
+import PlaceOrder from './Pages/PlaceOrder/PlaceOrder';
 // import Categories from './Components/Categories/Categories';
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/search' element={<CategoryPage />} />
+        <Route path='/shipping' element={<ShippingScreen />} />
+        <Route path='/payment' element={<Payment />} />
+        <Route path='/placeorder' element={<PlaceOrder />} />
       </Routes>
       </div>
       <div>
